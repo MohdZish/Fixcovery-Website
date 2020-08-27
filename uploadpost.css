@@ -1,0 +1,310 @@
+body {
+  padding-top: 60px;
+  margin: 0;
+  background: #ececec;
+}
+/*--- navigation bar ---*/
+.navbar {
+  -webkit-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
+  -moz-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
+  box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
+
+  background: #f0f0f0;
+  min-height: 50px;
+}
+
+.navbar2 {
+  background: #f0f0f0;
+  height: 45px;
+}
+
+.connectmenu {
+    width: 60px !important;
+    padding-left: 0;
+}
+
+.connectmenuitem {
+    padding-left: 10px;
+}
+
+.signupbutton{
+  background-color: #0090ff;
+  border-radius: 8%;
+}
+
+.navbar-brand {
+  color: #f0f0f0;
+  cursor: pointer;
+  width: 100px;
+  height: auto;
+  padding-left: 15px;
+}
+
+.identificationtab {
+  justify-content: flex-end;
+  padding-left: 10px;
+}
+
+.searcharea{
+  padding-left: 50px !important;
+}
+
+.searchbar{
+  width: 600px !important;
+}
+
+.signin{
+  background-color: #0090ff;
+  border-radius: 12px!important;
+}
+
+.navleftbtn{
+  min-width: 100px !important;
+}
+
+@media (max-width: 1000px) {
+    .searchbar{
+      width: 280px !important;
+    }
+
+    .searcharea{
+      padding-left: 0px !important;
+    }
+
+    .methodtitle{
+      word-wrap: break-word;
+      padding-left: 20px;
+    }
+
+    .steptext{
+      max-width: 630px;
+      word-wrap: break-word;
+      padding-left: 20px;
+    }
+
+    .circlecont {
+      padding-right: : 10px !important;
+    } 
+    .methodbox{
+      padding-left: 0px;
+    }
+
+    .stepcircle {
+    margin-right: 30px !important;
+    } 
+
+ }
+
+.sidebar {
+}
+
+.sidebar-sticky{
+  width: 150px !important;
+}
+
+
+.sidebarcontent{
+  padding-top: 30px;
+  padding-left: 0px !important;
+}
+
+.rightsidebar{
+  margin-top: 30px;
+}
+
+.adcanvas{
+  background-color: #f0f0f0;
+  height: 400px;
+}
+
+.titlecont {
+   max-width: 400px;
+   word-wrap: break-word;
+   margin-bottom: 0px !important;
+}
+
+.posttitle {
+   max-width: 640px;
+   word-wrap: break-word;
+   margin-top: 10px;
+}
+
+.postsubtitle {
+   font-size: 15px !important;
+   max-width: 300px;
+   word-wrap: break-word;
+   padding-bottom: 0px !important;
+   margin-bottom: 0px !important;
+}
+
+.postdesc {
+   max-width: 800px;
+   word-wrap: break-word;
+}
+
+.methodcircle {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 8px;
+
+    background: #0090ff;
+    text-align: center;
+
+    font: 25px Arial, sans-serif;
+    color: white;
+    z-index: 1000;
+    position: relative;
+} 
+
+.stepcircle {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    padding: 9px;
+
+    background: #0090ff;
+    text-align: center;
+
+    font: 15px Arial, sans-serif;
+    color: white;
+} 
+
+.methodtitle{
+  font-size: 22px;
+  max-width: 630px;
+  padding-top: 10px;
+  position: relative;
+}
+
+.steptext{
+  max-width: 630px;
+  word-wrap: break-word;
+  padding-top: 2px;
+  position: relative;
+}
+
+.s{
+  background-color: #f5f5f5;
+}
+
+.arrowup{
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.arrowbtn{
+  border: 0px;
+  background-color: #f5f5f5;
+  width: 100px !important;
+}
+
+.arrowbtn:focus{
+  outline: none;
+}
+
+.methodbox{
+  padding-left: 35px;
+  max-width: unset;
+}
+
+.stepimg1{
+  max-width: 400px;
+}
+
+.profilecontainer{
+  height: 120px;
+  margin-top: 30px !important;
+  margin-bottom: 10px;
+  background-color: #f0f0f0;
+  float: right;
+  border-radius:.75rem!important
+}
+
+.profileimage {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    padding: 8px;
+
+    background: #0090ff;
+    text-align: center;
+
+    font: 20px Arial, sans-serif;
+    color: white;
+} 
+
+#holder {
+    height: 60px;
+}
+#titlelabel {
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-top: 2px;
+    position: absolute;
+    color: #808080 !important;
+}
+
+.inputboxes {
+    min-height: 60px;
+    padding-bottom: 0px;
+    padding-top: 20px !important;
+    display: block;
+}
+
+#methodtitleinput {
+    height: 100%;
+    display: block;
+    margin-top: 10px;
+    position: relative;
+}
+
+.methoddesccont{
+  float: right;
+}
+.adddescbtn{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+  float: right;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active{
+    box-shadow:none !important;
+    outline:0px !important;
+}
+
+.addstepimgbtn{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+  float: right;
+}
+
+.boldtextbtn{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+  float: left;
+}
+
+.inputsubtitles{
+  font-size: 15px !important;
+}
+
+.inputboxes::placeholder { 
+  font-size: 13px;
+  padding-top: 7px;
+}
+
+[data-placeholder]:empty:before {
+     content: attr(data-placeholder);
+     color: #888;
+     font-size: 13px;
+     font-style: italic;
+}
