@@ -39,27 +39,117 @@
 	  }
 	}
 
-	var i = 2;
+	function notebtnchange() {
+	  var x = document.getElementById("addnote");
+
+	  if (x.innerHTML.includes("Remove")) { //includes check if it's add or remove
+	    x.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Add Note";
+		//x.style.cssText  = "border-color: #0275d8;";
+		document.getElementById("noteinput").value="";
+	  } else {
+	    x.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Remove Note";
+	    document.getElementsById("input").value="";
+	    //x.style.cssText  = "border-color: #c21919; color:#c21919;";
+	  }
+	}
+
+	function videobtnchange() {
+	  var x = document.getElementById("addvideo");
+
+	  if (x.innerHTML.includes("Remove")) { //includes check if it's add or remove
+	    x.innerHTML = "<i class='fab fa-youtube'></i> Add Video";
+		//x.style.cssText  = "border-color: #0275d8;";
+		document.getElementById("noteinput").value="";
+	  } else {
+	    x.innerHTML = "<i class='fab fa-youtube'></i> Remove Video";
+	    document.getElementById("input").value="";
+	    //x.style.cssText  = "border-color: #c21919; color:#c21919;";
+	  }
+	}
+
+	function searchvideourl(){
+		//var videospot = document.getElementsByClassName("videocanvas");
+		var urlinput = document.getElementById("videourlinput").value;
+
+		var videospot = document.getElementById('videocanvas');
+  		videospot.innerHTML = '<iframe src='urlinput' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+	}
 
 	function stepadd() {
 	  let menu = document.querySelector('#stepblock');
         let clonedMenu = menu.cloneNode(true);
-        clonedMenu.id = 'stepblock' + i;
+
+        var numofsteps = document.querySelectorAll(".stepclass");
+	    var maximumstepcount = parseInt(numofsteps.length, 10)
+
+        clonedMenu.id = 'stepblock' + (maximumstepcount+1);
         document.getElementById("forsteps").appendChild(clonedMenu);
 
         //change step number in each repetition
         var changestepnumber = clonedMenu.getElementsByClassName("stepcircle")[0];
-        changestepnumber.innerHTML = i;
+        changestepnumber.innerHTML = (maximumstepcount + 1);
 
-        //change step number in each repetition
+        //change step number inside box
         var changestepnum = clonedMenu.getElementsByClassName("titlelabel")[0];
-        changestepnum.innerHTML = "Step " + i;
+        changestepnum.innerHTML = "Step " + (maximumstepcount + 1);
+
+        //remove any existing texts
+        var refreshtext = clonedMenu.getElementsByClassName("inputboxes")[0];
+        refreshtext.value = "";
+
+        //remove any existing texts
+        var refreshtext = clonedMenu.getElementsByClassName("inputboxes")[0];
+        refreshtext.value = "";
+
+        //enable removestepbutton state as active
+        var removestepbtn = clonedMenu.getElementsByClassName("removestepbtn")[0];
+        removestepbtn.disabled = false;
+        removestepbtn.id = "removebuttonid" + (maximumstepcount+1);
 
         var element = document.getElementById("addstepbtn");
     	//element.parentNode.removeChild(element);
     	i++;
 	}
 
+	function removestep(elemid) {  //id is for which step number is selected to remove
+		//elemid = "removebuttonid1"
+
+		var num = elemid.replace(/\D/g, "");
+
+		var element = document.getElementById("stepblock" + num);
+		element.parentNode.removeChild(element);
+
+	    var numofsteps = document.querySelectorAll(".stepclass");
+	    var maximumstepcount = parseInt(numofsteps.length, 10)
+
+	    
+		stepfixer();
+
+	}
+
+	function stepfixer(){
+		var numofsteps = document.querySelectorAll(".stepclass");
+	    var maximumstepcount = parseInt(numofsteps.length, 10)
+
+	    
+
+	    for (j=1; j < maximumstepcount; j++) {
+	    	numofsteps[j].id = "stepblock" + (j+1);
+
+	    	//Fixing the step display number
+	    	var newelement = numofsteps[j].getElementsByClassName("stepcircle")[0];
+            newelement.innerHTML = j+1;
+
+	    	//Fixing the remove button id 
+            var changebuttonid = numofsteps[j].querySelector(".removestepbtn");
+          	changebuttonid.id = "removebuttonid" + (j+1);
+
+	    	//Fixing the step number inside input
+          	var changeinnerstep = numofsteps[j].querySelector(".titlelabel");
+          	changeinnerstep.innerHTML = "Step " + (j+1);
+	    	//alert("numofsteps[j].id")
+		}
+	}
 	
 	 
 </script>
@@ -137,7 +227,7 @@
             	<h1 class="h2 posttitle">Create New Post</h1>
 			</div>
 			<div class="btn-toolbar col-sm-1 mb-md-0 pull-right">
-              <button class="btn btn-sm btn-success">Upload</button>
+              <button class="btn btn-sm btn-primary">Upload</button>
             </div>
           </div>
 
@@ -167,17 +257,20 @@
 			</form>
 
           <div class="container pt-3">
-          	<div class="row">
-          		<div class="container s col-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div></div>
+          	<div class="row s methodrow">
+          		<div class="container s col-md-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div></div>
           		
-          		<div class="container s border-top border-bottom col-9"><h1 class="methodtitle">Method 1: <input class=""></h1></div>
+          		<div class="container d-none d-lg-block s border-top border-bottom col-md-2"><h1 class="methodtitle">Method 1: </h1></div>
 
-          		<div class="container col-1 s pull-right align-items-center">
+          		<input class="form-control methodname s col-md-6" placeholder="A small name for this method">
+
+          		<div class="container col-md-3 s pull-right align-items-center">
+          			<button class="arrowbtn s border-top border-bottom col-md-1" data-toggle="collapse" href="#collapseExample" id="arrowbtn" role="button"><i class="fas fa-angle-up js-rotate-if-collapsed"></i></button>
           			<button onclick="descbuttonchange()" type="button" data-toggle="collapse" href="#methoddescbox" role="button" aria-expanded="false" aria-controls="methoddescbox" class="btn btn-outline-primary adddescbtn mt-2" id="adddesc" role="button"><i class='fas fa-plus'></i> Add description</button>
 
           		</div>
 				
-				<button class="arrowbtn s border-top border-bottom col-1" data-toggle="collapse" href="#collapseExample" id="arrowbtn" role="button"><i class="fas fa-angle-up js-rotate-if-collapsed"></i></button>
+				
           	</div>
 
 
@@ -198,21 +291,24 @@
 			  	</div>
 			    
 			  	<div class="container"  id="forsteps">
-			    <div class="row pt-3" id="stepblock" >
+			    <div class="row pt-3 stepclass" id="stepblock" >
           			<div class="container col-1"><div class="stepcircle">1</div></div>
           		
 					<div class="container border-bottom col-11">
 						<div class="row">
-						    <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						        <div class="form-group" id=""> 
 						            <small id="titlelabel" class="titlelabel" for="input">Step 1</small>
 						            <textarea type="email" class="form-control inputboxes" id="input" placeholder="Here you can give a detailed explanation for this step, use bold if necessary." rows="1"></textarea>
 						        </div>
+						        
 						    </div>
 						</div>
 
 						<!--<button class="fontStyle boldtextbtn" onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text"><b>B</b>
     </button> -->
+
+						<button onclick="removestep(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removestepbtn mb-2 ml-2" role="button" disabled><i class="far fa-trash-alt"></i> Remove Step</button>
 
 						<button type="button" class="btn btn-outline-primary addstepimgbtn mb-2" role="button"><i class="fas fa-image"></i>  Add Image</button>
 					</div>
@@ -220,10 +316,39 @@
 				  </div>
 				
           		</div>
-				
-          		<button onclick="stepadd()" type="button" class="btn btn-primary mr-2 mt-4" role="button" id="addstepbtn">Add Step</button>
 
-			  </div>
+          		<div class="container-fluid pt-2 show methoddesccont pull-right" >
+			  		<div class="collapse row" id="notebox">
+			        <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			            <div class="form-group"> 
+			            	<small id="titlelabel" class="titlelabel" for="input">Note: </small>
+			                <input type="email" class="form-control noteinput" id="noteinput">
+			            </div>
+			        </div>
+			  	</div>
+
+				  	<div class="collapse" id="videochoose">
+				  		<div class="container ">
+				  			<div class="form-group" id="holder"> 
+			            	<small id="titlelabel" class="titlelabel" for="input">Add Video Url</small>
+			                <input onchange="searchvideourl()" type="email" class="form-control inputboxes" id="videourlinput" placeholder="Copy and paste the video url here">
+			            </div>
+				  		</div>
+				  		<div class="container">
+							<div id="videocanvas" class='videocanvas' onclick='changehtml()'>
+							  </div>
+						</div>
+			    </div>
+
+				<div class="row">
+					<button onclick="stepadd()" type="button" class="btn btn-primary col-md-8 mt-2 mx-auto stepfinalbuttons" role="button" id="addstepbtn"><i class="fas fa-plus-circle"></i> Add Step</button>
+
+					<button onclick="notebtnchange()" type="button" class="btn btn-warning mt-2 mx-auto stepfinalbuttons" data-toggle="collapse" href="#notebox" role="button" id="addnote"><i class="fas fa-exclamation-triangle"></i> Add Note</button>
+
+					<button onclick="videobtnchange()" data-toggle="collapse" href="#videochoose" type="button" class="btn btn-dark mt-2 mx-auto stepfinalbuttons" role="button" id="addvideo"><i class="fab fa-youtube"></i> Add Video</button>
+				</div>
+          		
+
 
 
 			</div>
@@ -233,8 +358,9 @@
         </main>
 
 		<div class="container col-md-2 pt-4">
-			<canvas class="myCanvas col-12 adcanvas"></canvas>
+			<canvas class="myCanvas col-12 adcanvas "></canvas>
 		</div>
+
       </div>
     </div>
 
