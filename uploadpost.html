@@ -155,6 +155,16 @@
 		}
 	}
 	
+	function methodadd() {
+	  let menu = document.querySelector('#methodblock');
+        let clonedMenu = menu.cloneNode(true);
+
+        var numofsteps = document.querySelectorAll(".methodclass");
+	    var maximumstepcount = parseInt(numofsteps.length, 10)
+
+	    clonedMenu.id = 'methodblock' + (maximumstepcount+1);
+        document.getElementById("formethod").appendChild(clonedMenu);
+	}
 	 
 </script>
 
@@ -167,7 +177,7 @@
 	<button type="button" class="btn navbuttons d-none d-md-block" data-toggle="collapse" href="#navbarSupportedContent">Fixes</button>
 
 	<form class="form-inline searcharea d-flex justify-content-center ">
-      <input class="form-control d-none d-md-block searchbar" type="search" placeholder="Discover fixes for your errors !" aria-label="Search">
+      <input class="form-control d-none d-md-block searchbar" type="search" placeholder="Search for a fix!" aria-label="Search">
   </form>
 
   <button class="navbar-toggler navbar-dark  " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -255,45 +265,43 @@
 			    </div>
 			</form>
 
-          <div class="container pt-3">
-          	<div class="row s methodrow">
-          		<div class="container d-none d-lg-block s col-md-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div></div>
-          		
-          		<div class="container s border-top  col-md-2"><h1 class="methodtitle">Method 1: </h1></div>
+		<div id="formethod">
+          	<div class="container pt-3 methodclass" id="methodblock">
+          		<div class="row s methodrow">
+          			<div class="container d-none d-lg-block s col-md-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div>
+          		</div>
 
-          		<input class="form-control methodname s col-md-6" placeholder="A small name for this method">
+          		<input class="form-control methodname s col-md-7" placeholder="A small name for this method">
 
-          		<div class="container col-md-3 s pull-right align-items-center">
+          		<div class="container col-md-4 s pull-right align-items-center">
           			<button class="arrowbtn s border-top border-bottom col-md-1" data-toggle="collapse" href="#collapseExample" id="arrowbtn" role="button"><i class="fas fa-angle-up js-rotate-if-collapsed"></i></button>
-          			<button onclick="descbuttonchange()" type="button" data-toggle="collapse" href="#methoddescbox" role="button" aria-expanded="false" aria-controls="methoddescbox" class="btn btn-outline-primary adddescbtn mt-2" id="adddesc" role="button"><i class='fas fa-plus'></i> Add description</button>
-
+          			<button onclick="descbuttonchange()" type="button" data-toggle="collapse" href="#methoddescbox" role="button" aria-expanded="false" aria-controls="methoddescbox" class="btn btn-outline-primary adddescbtn mt-2 ml-md-5" id="adddesc" role="button"><i class='fas fa-plus'></i> Add description</button>
           		</div>
 				
 				
           	</div>
 
-
-
           	<div class="collapse pt-2 row methodbox show" id="collapseExample">
-			  <div class="card card-body col-md-12">
-
-			  	<div class="show methoddesccont pull-right" >
-			  		<div class="collapse row" id="methoddescbox">
-			        <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			            <div class="form-group" id="holder"> 
-			            	<small id="titlelabel" class="titlelabel" for="input">Method Description</small>
-			                <input type="email" class="form-control inputboxes methoddescinput" id="metinput">
-			            </div>
-			        </div>
-			    </div>
+			  	<div class="card card-body col-md-12">
+			  		<div class="show methoddesccont pull-right" >
+			  			<div class="collapse row" id="methoddescbox">
+			        		<div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			            		<div class="form-group" id="holder"> 
+			            			<small id="titlelabel" class="titlelabel" for="input">Method Description</small>
+			                		<input type="email" class="form-control inputboxes methoddescinput" id="metinput">
+			            		</div>
+			        		</div>
+			    		</div>
 			  		
-			  	</div>
+			  		</div>
 			    
-			  	<div id="forsteps">
-			    <div class="d-flex flex-row pt-3 stepclass" id="stepblock" >
-          			<div class="d-none d-md-block"><div class="stepcircle">1</div></div>
+			  		<div id="forsteps">
+			   		   <div class="d-flex flex-row pt-3 stepclass" id="stepblock" >
+          			  	 <div class="d-none d-md-block">
+          			   		<div class="stepcircle">1</div>
+          			   	 </div>
           		
-					<div class="container border-bottom">
+						<div class="container border-bottom">
 						        <div class="form-group" id=""> 
 						            <small id="titlelabel" class="titlelabel" for="input">Step 1</small>
 						            <textarea type="email" class="form-control inputboxes stepbox " id="input" placeholder="Here you can give a detailed explanation for this step, use bold if necessary." rows="2"></textarea>
@@ -342,15 +350,18 @@
 
 					<button onclick="notebtnchange()" type="button" class="btn btn-warning mt-2 mx-auto stepfinalbuttons" data-toggle="collapse" href="#notebox" role="button" id="addnote"><i class="fas fa-exclamation-triangle"></i> Add Note</button>
 
-					<button onclick="videobtnchange()" data-toggle="collapse" href="#videochoose" type="button" class="btn btn-dark mt-2 mx-auto stepfinalbuttons" role="button" id="addvideo"><i class="fab fa-youtube"></i> Add Video</button>
+					<button onclick="videobtnchange()" data-toggle="collapse" href="#videochoose" type="button" class="btn btn-danger mt-2 mx-auto stepfinalbuttons" role="button" id="addvideo"><i class="fab fa-youtube"></i> Add Video</button>
 				</div>
-          		
-
-
-
-			</div>
+          		</div>
+          	</div>
+          </div>
 		  </div>
+		</div>
 
+		  <div class="d-flex flex-row pt-4">
+		  	<button onclick="methodadd()" type="button" class="btn btn-dark mx-auto stepfinalbuttons justify-content-end"><i class="fas fa-plus-circle"></i> Add New Method</button>
+		  </div>
+		
 
         </main>
 
