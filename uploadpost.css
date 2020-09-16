@@ -41,7 +41,7 @@ body {
 
 .searchbar{
   width: 600px !important;
-  height: 30px;
+  height: 35px;
 }
 
 .signin{
@@ -68,18 +68,6 @@ body {
 /*--- color END ---*/
 /*--- medias ---*/
 @media (max-width: 1000px) {
-    .searchbar{
-      width: 240px !important;
-    }
-
-    .searcharea{
-      padding-left: 0px !important;
-    }
-
-    .methodtitle{
-      display: none;
-    }
-
     .steptext{
       max-width: 630px;
       word-wrap: break-word;
@@ -94,7 +82,7 @@ body {
 
 
     .navbar-brand {
-    padding-left: 0px;
+    padding-left: -0px;
     }
  }
 /*--- medias END ---*/
@@ -308,7 +296,26 @@ body {
   display: inline-block;
   outline:0px !important;
   font-size: 13px !important;
-  float: right;
+}
+
+.removestepbtn{  
+  display: inline-block;
+  outline:0px !important;
+  font-size: 12px !important;
+  margin-bottom: 0px;
+  right: 35px !important;
+  position: absolute;
+  border-color: transparent!important;
+}
+
+.removenotebtn{  
+  display: inline-block;
+  outline:0px !important;
+  font-size: 12px !important;
+  margin-bottom: 0px;
+  right: 15px !important;
+  position: absolute;
+  border-color: transparent!important;
 }
 
 .boldtextbtn{
@@ -342,10 +349,11 @@ body {
 
 
 #noteinput{
-  background-color: #ffdb78;
   min-height: 60px;
   padding-bottom: 0px;
   padding-top: 20px !important;
+  border-color: #f5d04c;
+  border-width: 2px;
 }
 
 .dim{

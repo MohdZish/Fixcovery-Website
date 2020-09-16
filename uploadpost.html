@@ -40,20 +40,6 @@
 	  }
 	}
 
-	function notebtnchange() {
-	  var x = document.getElementById("addnote");
-
-	  if (x.innerHTML.includes("Remove")) { //includes check if it's add or remove
-	    x.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Add Note";
-		//x.style.cssText  = "border-color: #0275d8;";
-		document.getElementById("noteinput").value="";
-	  } else {
-	    x.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Remove Note";
-	    document.getElementsById("input").value="";
-	    //x.style.cssText  = "border-color: #c21919; color:#c21919;";
-	  }
-	}
-
 	function videobtnchange() {
 	  var x = document.getElementById("addvideo");
 
@@ -111,8 +97,6 @@
         removestepbtn.id = "removebuttonid" + (maximumstepcount+1);
 
         var element = document.getElementById("addstepbtn");
-    	//element.parentNode.removeChild(element);
-    	i++;
 	}
 
 	function removestep(elemid) {  //id is for which step number is selected to remove
@@ -155,6 +139,34 @@
 		}
 	}
 	
+	function noteadd() {
+	  var x = document.getElementById("addnote");
+
+	  let menu = document.querySelector('#notebox');
+        let clonedMenu = menu.cloneNode(true);
+        clonedMenu.hidden = false;
+        
+        var numofnotes = document.querySelectorAll(".noteclass");
+	    var maximumnotecount = parseInt(numofnotes.length, 10)
+
+        clonedMenu.id = 'notebox' + (maximumnotecount+1);
+
+        document.getElementById("forsteps").appendChild(clonedMenu);
+	}
+
+	function removenote(elemid) {  //id is for which step number is selected to remove
+		//elemid = "removebuttonid1"
+
+		var x = document.getElementById("addnote");
+
+	  let menu = document.querySelector('#notebox');
+        let clonedMenu = menu.cloneNode(true);
+        clonedMenu.hidden = false;
+
+        document.getElementById("forsteps").appendChild(clonedMenu);
+
+	}
+
 	function methodadd() {
 	  let menu = document.querySelector('#methodblock');
         let clonedMenu = menu.cloneNode(true);
@@ -174,7 +186,7 @@
 	<button class="navbar-toggler navbar-dark  " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon "></span>
   </button>
-  
+
   <img class="navbar-brand" src="Images/Logo/logo.png" href="#"></img>
 
 	<button type="button" class="btn navbuttons d-none d-md-block" data-toggle="collapse" href="#navbarSupportedContent">Home</button>
@@ -302,18 +314,33 @@
           			   		<div class="stepcircle">1</div>
           			   	 </div>
           		
-						<div class="container border-bottom">
+						<div class="container">
 						        <div class="form-group" id=""> 
 						            <small id="titlelabel" class="titlelabel" for="input">Step 1</small>
+
+						            <button onclick="removestep(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removestepbtn" role="button" disabled><i class="fas fa-times-circle"></i></button>
+
 						            <textarea type="email" class="form-control inputboxes stepbox " id="input" placeholder="Here you can give a detailed explanation for this step, use bold if necessary." rows="2"></textarea>
-						</div>
+								</div>
+
+								<div class="row noteclass" id="notebox" hidden="false">
+							        <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							            <div class="form-group"> 
+							            	<small id="titlelabel" class="titlelabel" for="input">Note: </small>
+
+							            	<button onclick="removestep(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removenotebtn" role="button" disabled><i class="fas fa-times-circle"></i></button>
+
+							                <input type="email" class="form-control noteinput" id="noteinput">
+
+
+							            </div>
+							        </div>
+						  		</div>
 
 						<!--<button class="fontStyle boldtextbtn" onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text"><b>B</b>
     </button> -->
     				<div class="d-flex flex-row justify-content-end">
-    					<button type="button" class="btn btn-outline-primary addstepimgbtn mb-2" role="button"><i class="fas fa-image"></i>  Add Image</button>
 
-    					<button onclick="removestep(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removestepbtn mb-2 ml-md-2" role="button" disabled><i class="far fa-trash-alt"></i> Remove Step</button>
 						
     				</div>
 						
@@ -324,14 +351,7 @@
           		</div>
 
           		<div class="pt-2 show methoddesccont pull-right" >
-			  		<div class="collapse row" id="notebox">
-			        <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			            <div class="form-group"> 
-			            	<small id="titlelabel" class="titlelabel" for="input">Note: </small>
-			                <input type="email" class="form-control noteinput" id="noteinput">
-			            </div>
-			        </div>
-			  	</div>
+			  		
 
 				  	<div class="collapse" id="videochoose">
 				  		<div>
@@ -347,11 +367,14 @@
 			    </div>
 
 				<div class="row">
-					<button onclick="stepadd()" type="button" class="btn col-md-8 mt-2 mx-auto stepfinalbuttons secondarycolor" role="button" id="addstepbtn"><i class="fas fa-plus-circle"></i> Add Step</button>
+					<button onclick="stepadd()" type="button" class="btn col-md-5 mt-2 mx-auto stepfinalbuttons secondarycolor" role="button" id="addstepbtn"><i class="fas fa-plus-circle"></i> Add Step</button>
 
-					<button onclick="notebtnchange()" type="button" class="btn btn-warning mt-2 mx-auto stepfinalbuttons" data-toggle="collapse" href="#notebox" role="button" id="addnote"><i class="fas fa-exclamation-triangle"></i> Add Note</button>
+					<button onclick="noteadd()" type="button" class="btn btn-warning mt-2 mx-auto stepfinalbuttons col-md-2" href="#notebox" role="button" id="addnote"><i class="fas fa-exclamation-triangle"></i> Add Note</button>
 
-					<button onclick="videobtnchange()" data-toggle="collapse" href="#videochoose" type="button" class="btn btn-danger mt-2 mx-auto stepfinalbuttons" role="button" id="addvideo"><i class="fab fa-youtube"></i> Add Video</button>
+					<button type="button" class="btn btn-primary addstepimgbtn mx-auto mt-2 col-md-2" role="button"><i class="fas fa-image"></i>  Add Image</button>
+
+					<button onclick="videobtnchange()" data-toggle="collapse" href="#videochoose" type="button" class="btn btn-danger mt-2 mx-auto stepfinalbuttons col-md-2" role="button" id="addvideo"><i class="fab fa-youtube"></i> Add Video</button>
+					
 				</div>
           		</div>
           	</div>
