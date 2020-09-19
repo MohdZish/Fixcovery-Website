@@ -185,7 +185,7 @@
         let clonedMenu = menu.cloneNode(true);
 
         var numofsteps = document.querySelectorAll(".methodclass");
-	    var maximumstepcount = parseInt(numofsteps.length, 10)
+	    var maximumstepcount = parseInt(numofsteps.length, 10);
 
 	    clonedMenu.id = 'methodblock' + (maximumstepcount+1);
         document.getElementById("formethod").appendChild(clonedMenu);
@@ -194,6 +194,41 @@
 
 
 	function getfinalstring(){
+		/*var alltext = document.getElementById('forsteps').getElementsByTagName('inpt')[0];
+
+		alert(alltext.innerHTML);*/
+
+		var divElem = document.getElementById("forsteps");
+		var inputElements = divElem.querySelectorAll("textarea, input"); //gets all type of ELEMENTS precised in ORDER so great!!!!
+		var temparray = [];
+
+		var number = parseInt(inputElements.length, 10);
+
+		var finalstring = "";
+
+		var methodname = document.getElementsByClassName("methodname");
+		finalstring = finalstring + "@m@meth " + methodname[0].value + "\n";
+
+		var methoddesc = document.getElementsByClassName("methoddescinput");
+		if(methoddesc[0].value != ""){
+			finalstring = finalstring + "@s@desc " +  methoddesc[0].value + "@s@\n";
+		}
+
+		for (i=0; i < number; i++){
+			if(inputElements[i].id == "step"){
+				temparray[i] = "@s@step " + inputElements[i].value + " @s@ \n";
+			}
+
+			if(inputElements[i].id == "noteinput"){
+				temparray[i] = "@s@note " + inputElements[i].value + " @s@ \n";
+			}
+		}
+
+
+		for(var sentence in temparray){
+			finalstring = finalstring + temparray[sentence];
+		}
+		alert(finalstring);
 		
 	}
 	 
@@ -337,9 +372,9 @@
 						        <div class="form-group" id=""> 
 						            <small id="titlelabel" class="titlelabel" for="input">Step 1</small>
 
-						            <button onclick="removestep(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removestepbtn" role="button" disabled><i class="fas fa-times-circle"></i></button>
+						            <button onclick="removestep(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removestepbtn" role="button"  disabled><i class="fas fa-times-circle"></i></button>
 
-						            <textarea type="email" class="form-control inputboxes stepbox " id="input" placeholder="Here you can give a detailed explanation for this step, use bold if necessary." rows="2"></textarea>
+						            <textarea type="text" class="form-control inputboxes stepbox " tag="step" id="step" placeholder="Here you can give a detailed explanation for this step, use bold if necessary." rows="2"></textarea>
 								</div>
 
 						<!--<button class="fontStyle boldtextbtn" onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text"><b>B</b>
@@ -351,14 +386,14 @@
 				
           		</div>
 
-          		<div class="row noteclass" id="notebox" hidden="false">
+          		<div class="row noteclass pt-3" id="notebox" hidden="false">
 							        <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							            <div class="form-group"> 
 							            	<small id="titlelabel" class="titlelabel" for="input">Note: </small>
 
 							            	<button onclick="removenote(this.id)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removenotebtn" role="button"><i class="fas fa-times-circle"></i></button>
 
-							                <input type="email" class="form-control noteinput" id="noteinput">
+							                <textarea type="email" class="form-control noteinput" id="noteinput"></textarea> 
 
 
 							            </div>
