@@ -42,6 +42,14 @@ body {
 .searchbar{
   width: 600px !important;
   height: 35px;
+  background-color: #8b71eb!important;
+  border: 10px !important;
+  color: white !important;
+}
+
+.searchbar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white !important;
+  opacity: 0.1; /* Firefox */
 }
 
 .signin{
