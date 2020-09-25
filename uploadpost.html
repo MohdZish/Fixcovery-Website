@@ -160,22 +160,28 @@ thisstep.parentNode.removeChild(thisstep);
 
 
 	function getfinalstring(){
-		/*var alltext = document.getElementById('forsteps').getElementsByTagName('inpt')[0];
+		
+		//check number of methods to use in for loop
+		var numofmethods = document.querySelectorAll(".methodclass");
+	    var maximummethodcount = parseInt(numofmethods.length, 10);
+	    var finalstring = "";
 
-		alert(alltext.innerHTML);*/
+	for (methodnumber = 1; methodnumber < maximummethodcount; methodnumber++){
+		var divMethod = document.querySelectorAll(".methodclass")[methodnumber]; //THE method
+		var divElem = divMethod.querySelectorAll("#forsteps")[0];
 
-		var divElem = document.getElementById("forsteps");
 		var inputElements = divElem.querySelectorAll("textarea, input"); //gets all type of ELEMENTS precised in ORDER so great!!!!
 		var temparray = [];
 
 		var number = parseInt(inputElements.length, 10);
 
-		var finalstring = "";
+		
 
-		var methodname = document.getElementsByClassName("methodname");
+		var methodname = divMethod.getElementsByClassName("methodname");
+		alert(methodname[0].value);
 		finalstring = finalstring + "@m@meth " + methodname[0].value + "\n";
 
-		var methoddesc = document.getElementsByClassName("methoddescinput");
+		var methoddesc = divMethod.getElementsByClassName("methoddescinput");
 		if(methoddesc[0].value != ""){
 			finalstring = finalstring + "@s@desc " +  methoddesc[0].value + "@s@\n";
 		}
@@ -194,6 +200,9 @@ thisstep.parentNode.removeChild(thisstep);
 		for(var sentence in temparray){
 			finalstring = finalstring + temparray[sentence];
 		}
+		
+		}
+
 		alert(finalstring);
 		
 	}
@@ -212,8 +221,9 @@ thisstep.parentNode.removeChild(thisstep);
         document.getElementById("formethod").appendChild(clonedMenu);
 
         clonedMenu.querySelector("#methoddescbox").id = "methoddescbox" + (maximummethodcount+1);
-	}
 
+
+	}
 
 	function loadmethod() {
         let menu = document.querySelector('#methodblock');
@@ -266,8 +276,10 @@ thisstep.parentNode.removeChild(thisstep);
       <div class="row">
         <nav class="col-md-2 d-none d-md-block sidebar">
           <div class="sidebar position-fixed">
+          	<div class="card" style="margin-top: 30px; width: 180px;">
 
-            <h6 class="sidebar-heading d-flex text-muted sidebarcontent">
+			  <div class="card-body sidebarcard">
+			    <h6 class="sidebar-heading d-flex text-muted sidebarcontent">
               <span>Recently added <i class="fas fa-history"></i></span>
             </h6>
 
@@ -295,6 +307,10 @@ thisstep.parentNode.removeChild(thisstep);
                 </a>
               </li>
             </ul>
+			  </div>
+			</div>
+
+            
           </div>
         </nav>
 
@@ -335,24 +351,20 @@ thisstep.parentNode.removeChild(thisstep);
           			<div class="container d-none d-lg-block s col-md-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div>
           		</div>
 
-          		<input class="form-control methodname s col-md-7" placeholder="A small name for this method">
+          		<input class="form-control methodname s col-md-10" placeholder="A small name for this method">
 
-          		<div class="container col-md-4 s pull-right align-items-center">
-          			<button class="arrowbtn s border-top border-bottom col-md-1" data-toggle="collapse" href="#collapseExample" id="arrowbtn" role="button"><i class="fas fa-angle-up js-rotate-if-collapsed"></i></button>
-          			<button onclick="descbuttonchange(this)" type="button" data-toggle="collapse" href="#methoddescbox" role="button" aria-expanded="false" aria-controls="methoddescbox" class="btn btn-outline-primary adddescbtn mt-2 ml-md-5" id="adddesc" role="button"><i class='fas fa-plus'></i> Add description</button>
-          		</div>
-				
+				<div class="emptydiv col-md-1"></div>
 				
           	</div>
 
           	<div class="collapse pt-2 row methodbox show" id="collapseExample">
 			  	<div class="card card-body col-md-12">
 			  		<div class="show methoddesccont pull-right" >
-			  			<div class="collapse row" id="methoddescbox">
+			  			<div class=" row" id="methoddescbox">
 			        		<div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			            		<div class="form-group" id="holder"> 
 			            			<small id="titlelabel" class="titlelabel" for="input">Method Description</small>
-			                		<input type="email" class="form-control inputboxes methoddescinput" id="metinput">
+			                		<input type="email" class="form-control inputboxes methoddescinput" id="metinput" placeholder="A few words on what you're going to do in this method !">
 			            		</div>
 			        		</div>
 			    		</div>
@@ -417,6 +429,7 @@ thisstep.parentNode.removeChild(thisstep);
 					<button onclick="stepadd(this)" type="button" class="btn col-md-5 mt-2 mx-auto stepfinalbuttons secondarycolor" role="button" id="addstepbtn0"><i class="fas fa-plus-circle"></i> Add Step</button>
 
 					<button onclick="noteadd(this)" type="button" class="btn btn-warning mt-2 mx-auto stepfinalbuttons col-md-2" href="#notebox" role="button" id="addnote"><i class="fas fa-exclamation-triangle"></i> Add Note</button>
+
 
 					<button type="button" class="btn btn-primary addstepimgbtn mx-auto mt-2 col-md-2" role="button"><i class="fas fa-image"></i>  Add Image</button>
 

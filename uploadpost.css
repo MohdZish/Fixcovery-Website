@@ -97,9 +97,12 @@ body {
 
 /*--- sidebar ---*/
 .sidebar {
-  background-color: #F7F8FC ;
   border-right: 5px !important;
   border-right-color:  rgb(201, 76, 76) !important;
+}
+
+.sidebarcard{
+  background-color: #F7F8FC ;
 }
 
 .sidebar-sticky{
@@ -108,7 +111,6 @@ body {
 
 
 .sidebarcontent{
-  padding-top: 30px;
   padding-left: 0px !important;
 }
 
