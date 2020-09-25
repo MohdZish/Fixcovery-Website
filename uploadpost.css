@@ -42,13 +42,14 @@ body {
 .searchbar{
   width: 600px !important;
   height: 35px;
-  background-color: #8b71eb!important;
+  /*background-color: #8b71eb!important;
+  color: white !important;*/
   border: 10px !important;
-  color: white !important;
+  
 }
 
 .searchbar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white !important;
+  /*color: white !important;*/
   opacity: 0.1; /* Firefox */
 }
 
@@ -287,6 +288,10 @@ body {
     position: relative;
 }
 
+.removemethodbtn{
+  border: 0px !important;
+}
+
 .methoddesccont{
   float: right;
 }
@@ -300,6 +305,10 @@ body {
 .btn-outline-primary:active{
     box-shadow:none !important;
     outline:0px !important;
+}
+
+.methodcard{
+  background-color: #fcfdff !important; 
 }
 
 .addstepimgbtn{
