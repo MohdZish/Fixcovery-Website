@@ -1,36 +1,76 @@
 body {
-  padding-top: 60px;
+  padding-top: 55px;
   margin: 0;
-  background: #ececec;
+  background: white !important;
 }
+
+@font-face {
+  font-family: Roboto;
+  src: url(Fonts/Roboto-Medium.tff);
+}
+
+@font-face {
+  font-family: BebasNeue;
+  src: url(Fonts/BebasNeue-Regular.tff);
+}
+
+@font-face {
+  font-family: Oswald;
+  src: url(Fonts/Oswald-VariableFont_wght.tff);
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Fonts/Inter-Regular.woff2?v=3.15") format("woff2"),
+       url("Fonts/Inter-Regular.woff?v=3.15") format("woff");
+}
+
 /*--- navigation bar ---*/
 .navbar {
-  -webkit-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
+  /*----webkit-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
   -moz-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
-  box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
+  box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);---*/
 
   background: #4b2af5;
   min-height: 50px;
 }
 
 .navbuttons{
-  background-color: #4b2af5;
-  color: white;
+  background-color: transparent !important;
+  color: #fcfcfc !important;
+  font-family: Inter;
 }
 
-.navbar2 {
-  background: #f0f0f0;
-  height: 45px;
+.underline {
+  position : relative;
+   color : tomato ;
+  display : inline-block;
+}
+.underline::after {
+  content : "";
+  position : absolute;
+  width : 100%;
+  height : 2px;
+  background-color: white;
+  opacity: 0.7;
+  bottom: 0;
+  left: 0;
+  transform : scaleX(0);
+  transform-origin: bottom right;
+  transition : transform 0.25s linear;
+}
+.underline:hover::after {
+  transform-origin: bottom left;
+    transform: scaleX(1);
 }
 
-.connectmenu {
-    width: 60px !important;
-    padding-left: 0;
-}
 
-.connectmenuitem {
-    padding-left: 10px;
-}
+.nav-item .dropdown-menu{ display: none !important; margin-top: 0px !important; }
+.navbar .nav-item:hover .nav-link{ color: #fff !important; }
+.navbar .nav-item:hover .dropdown-menu{ display: block !important;  }
 
 .signupbutton{
   background-color: #0090ff;
@@ -42,7 +82,6 @@ body {
   cursor: pointer;
   width: 135px;
   height: auto;
-  padding-left: 5px;
 }
 
 .identificationtab {
@@ -51,40 +90,51 @@ body {
 }
 
 .searcharea{
-  padding-left: 50px !important;
+  padding-left: 30px !important;
 }
 
 .searchbar{
-  width: 600px !important;
+  width: 500px !important;
+  height: 35px;
+  /*background-color: #8b71eb!important;
+  color: white !important;*/
+  border: 10px !important;
+
+  
+}
+
+.searchbar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /*color: white !important;*/
+  opacity: 0.1; /* Firefox */
 }
 
 .signin{
-  background-color: #0090ff;
   border-radius: 12px!important;
+}
+
+
+.secondarycolor {
+  background-color: #4b2af5 !important;
+  color: white !important;
 }
 
 .navleftbtn{
   min-width: 100px !important;
 }
 
+/*--- navigation bar END---*/
+
+/*--- colors ---*/
+.secondarycolor {
+  background-color: #4b2af5;
+  color: white !important;
+}
+/*--- color END ---*/
+/*--- medias ---*/
 @media (max-width: 1000px) {
-    .searchbar{
-      width: 240px !important;
-    }
-
-    .searcharea{
-      padding-left: 0px !important;
-    }
-
-    .methodtitle{
-      word-wrap: break-word;
-      padding-left: 20px;
-    }
-
     .steptext{
       max-width: 630px;
       word-wrap: break-word;
-      padding-left: 20px;
     }
 
     .circlecont {
@@ -94,9 +144,21 @@ body {
       padding-left: 0px;
     }
 
- }
 
+    .navbar-brand {
+    padding-left: -0px;
+    }
+ }
+/*--- medias END ---*/
+
+/*--- sidebar ---*/
 .sidebar {
+  border-right: 5px !important;
+  border-right-color:  rgb(201, 76, 76) !important;
+}
+
+.sidebarcard{
+  background-color: #F7F8FC ;
 }
 
 .sidebar-sticky{
@@ -105,7 +167,6 @@ body {
 
 
 .sidebarcontent{
-  padding-top: 30px;
   padding-left: 0px !important;
 }
 
@@ -114,10 +175,32 @@ body {
 }
 
 .adcanvas{
-  background-color: #f0f0f0;
+  background-color: #F7F8FC;
   height: 400px;
 }
 
+.textstyle1{
+  font-family: Inter !important;
+}
+
+.buttonstyle1:hover{
+  background-color: #4b2af5;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  color: white;
+}
+
+.sharelogo{
+  font-size: 28px;
+}
+
+.innerside {
+     width:100% !important;
+   }
+
+/*--- sidebars END ---*/
+
+/*--- Main frame ---*/
 .titlecont {
    max-width: 400px;
    word-wrap: break-word;
@@ -125,7 +208,6 @@ body {
 }
 
 .posttitle {
-   max-width: 640px;
    word-wrap: break-word;
    margin-top: 10px;
 }
@@ -162,21 +244,30 @@ body {
     border-radius: 50%;
     width: 35px;
     height: 35px;
-    padding: 8px;
+    padding: 9px;
 
     background-color: #4b2af5;
     text-align: center;
 
-    font: 20px Arial, sans-serif;
+    font: 15px Arial, sans-serif;
     color: white;
+    position: relative;
 } 
 
 .methodtitle{
   font-size: 22px;
   max-width: 630px;
-  word-wrap: break-word;
   padding-top: 10px;
-  position: relative;
+}
+
+.methodname{
+    display: block;
+    font-size: 15px;
+}
+
+.methodname::placeholder { 
+  font-size: 13px;
+  padding-top: 7px;
 }
 
 .steptext{
@@ -187,7 +278,7 @@ body {
 }
 
 .s{
-  background-color: #f5f5f5;
+  background-color: #f0edff;
 }
 
 .arrowup{
@@ -203,6 +294,8 @@ body {
   border: 0px;
   background-color: #f5f5f5;
   width: 100px !important;
+  padding-top: 10px;
+  float: right;
 }
 
 .arrowbtn:focus{
@@ -210,7 +303,6 @@ body {
 }
 
 .methodbox{
-  padding-left: 35px;
   max-width: unset;
 }
 
@@ -227,6 +319,11 @@ body {
   border-radius:.75rem!important
 }
 
+.form-control:focus {
+        border-color: #3b86ff !important;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.075) inset, 0px 0px 0px rgba(0, 255, 255, 0.5) !important;
+    }
+
 .profileimage {
     border-radius: 50%;
     width: 70px;
@@ -239,3 +336,137 @@ body {
     font: 20px Arial, sans-serif;
     color: white;
 } 
+
+#holder {
+    height: 60px;
+}
+#titlelabel {
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-top: 2px;
+    position: absolute;
+    color: #808080 !important;
+}
+
+.inputboxes {
+    min-height: 60px;
+    padding-bottom: 0px;
+    padding-top: 20px !important;
+    display: block;
+}
+
+
+#methodtitleinput {
+    height: 100%;
+    display: block;
+    margin-top: 10px;
+    position: relative;
+}
+
+.removemethodbtn{
+  border: 0px !important;
+}
+
+.methoddesccont{
+  float: right;
+}
+.adddescbtn{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active{
+    box-shadow:none !important;
+    outline:0px !important;
+}
+
+.methodcard{
+  background-color: #fcfdff !important; 
+}
+
+.addstepimgbtn{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+}
+
+.removestepbtn{  
+  display: inline-block;
+  outline:0px !important;
+  font-size: 12px !important;
+  margin-bottom: 0px;
+  right: 35px !important;
+  position: absolute;
+  border-color: transparent!important;
+}
+
+.removenotebtn{  
+  display: inline-block;
+  outline:0px !important;
+  font-size: 12px !important;
+  margin-bottom: 0px;
+  right: 15px !important;
+  position: absolute;
+  border-color: transparent!important;
+}
+
+.imagecard{
+    background-color: #f0fff4 !important;
+    height: 100px;
+}
+/*--- 
+.uploadimagebutton{
+  flex:1;
+}
+ ---*/
+
+
+.boldtextbtn{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+  float: left;
+}
+
+.inputsubtitles{
+  font-size: 15px !important;
+}
+
+.inputboxes::placeholder { 
+  font-size: 13px;
+  padding-top: 7px;
+}
+
+[data-placeholder]:empty:before {
+     content: attr(data-placeholder);
+     color: #888;
+     font-size: 13px;
+     font-style: italic;
+}
+
+.stepfinalbuttons{
+  display: inline-block;
+  outline:0px !important;
+  font-size: 13px !important;
+}
+
+
+#noteinput{
+  min-height: 60px;
+  padding-bottom: 0px;
+  padding-top: 20px !important;
+  border-color: black;
+  border-width: 0px;
+  background-color: #E8EFFF;
+}
+
+.dim{
+  filter: brightness(30%);
+  }
+
+.videocanvas{
+  background-color: #f0f0f0;
+  height: 200px;
+}

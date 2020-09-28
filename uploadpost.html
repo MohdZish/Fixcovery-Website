@@ -158,6 +158,33 @@
 		thisnote.parentNode.removeChild(thisnote);
 	}
 
+	function addimage(theimagebutton){
+		var thismethod = theimagebutton.closest(".methodbox");
+	  	let menu = document.querySelector('#imagebox');
+        let clonedMenu = menu.cloneNode(true);
+        clonedMenu.hidden = false;
+        clonedMenu.tag = "";
+
+        thismethod.querySelector(".forsteps").appendChild(clonedMenu);
+	}
+
+	function removeimage(removeimagebutton){
+		var thisimage = removeimagebutton.closest(".imageclass");
+		//var num = removebutton.replace(/\D/g, "");
+
+		thisimage.parentNode.removeChild(thisimage);
+	}
+
+	function preview_image(event, theimagebutton) 
+	{
+	 var reader = new FileReader();
+	 reader.onload = function()
+	 {
+	 	var output = theimagebutton.parentNode.parentNode.querySelector("#output_image")
+	 	output.src = reader.result;
+	 }
+	 reader.readAsDataURL(event.target.files[0]);
+	}
 
 	function getfinalstring(){
 		
@@ -233,7 +260,7 @@
 			removemethodbtn.parentNode.parentNode.parentNode.removeChild(themethodtoremove)
 		  } 
 		else {
-			
+
 		  }
 		
 
@@ -264,9 +291,22 @@
 
   <img class="navbar-brand" src="Images/Logo/logo.png" href="#"></img>
 
-	<button type="button" class="btn navbuttons d-none d-md-block" data-toggle="collapse" href="#navbarSupportedContent">Home</button>
+	<button type="button" class="btn navbuttons underline d-none d-md-block">Home</button>
 
-	<button type="button" class="btn navbuttons d-none d-md-block" data-toggle="collapse" href="#navbarSupportedContent">Fixes</button>
+	<div class="nav-item dropdown">
+	  <button class="btn navbuttons d-none d-md-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Fixes <i class="fas fa-angle-down"></i>
+	  </button>
+	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	    <a class="dropdown-item" href="#">Action</a>
+	    <a class="dropdown-item" href="#">Another action</a>
+	    <a class="dropdown-item" href="#">Something else here</a>
+	  </div>
+	</div>
+
+
+
+	<button type="button" class="btn navbuttons underline d-none d-md-block">Ask Question</button>
 
 	<form class="form-inline searcharea d-flex justify-content-center ">
       <input class="form-control d-none d-md-block searchbar" type="search" placeholder="Search for a fix!" aria-label="Search">
@@ -276,7 +316,7 @@
     <ul class="navbar-nav">
     
       <li class="nav-item pr-2">
-        <a class="nav-link navbuttons " href="#"><i class="far fa-plus-square navbuttons"></i> Upload Post</span></a>
+        <button class="btn btn-outline-light signin d-none d-md-block" href="#"><i class="fas fa-plus"></i> Upload Post</button>
       </li>
       <li class="nav-item pr-2">
         <button type="button" class="btn btn-light signin"><i class="fas fa-sign-in-alt"></i> Sign In</button>
@@ -299,24 +339,24 @@
 
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link textstyle1 buttonstyle1" href="#">
                   Fix number 1
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link textstyle1 buttonstyle1" href="#">
                   Fix number 2
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link textstyle1 buttonstyle1" href="#">
                   Fix number 3
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link textstyle1 buttonstyle1" href="#">
                   Fix number 4
                 </a>
               </li>
@@ -334,7 +374,7 @@
             	<h1 class="h2 posttitle">Create New Post</h1>
 			</div>
 			<div class="btn-toolbar pull-right ">
-              <button onclick="getfinalstring()" class="btn btn-sm btn-primary secondarycolor">Upload</button>
+              <button onclick="getfinalstring()" class="btn btn-sm btn-primary secondarycolor">Upload this fix</button>
             </div>
           </div>
 
@@ -361,14 +401,14 @@
 
 		<div id="formethod">
           	<div class="container pt-3 methodclass" id="methodblock" hidden>
-          		<div class="row s methodrow">
-          			<div class="container d-none d-lg-block s col-md-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div>
-          			</div>
+	          		<div class="row s methodrow">
+	          			<div class="container d-none d-lg-block s col-md-1"><div class="methodcircle"><i class="fas fa-wrench"></i></div>
+	          			</div>
 
-          			<input class="form-control methodname s col-md-10" placeholder="A small name for this method">
+	          			<input class="form-control methodname s col-md-10" placeholder="A small name for this method">
 
-					<button onclick="removemethod(this)" class="col-md-1 btn btn-outline-secondary removemethodbtn" disabled=""><i class="fas fa-times-circle"></i></button> 
-          	</div>
+						<button onclick="removemethod(this)" class="col-md-1 btn btn-outline-secondary removemethodbtn" disabled=""><i class="fas fa-times-circle"></i></button> 
+	          		</div>
 
           	<div class="collapse pt-2 row methodbox show" id="collapseExample">
 			  	<div class="card card-body col-md-12 methodcard">
@@ -422,6 +462,29 @@
 							        </div>
 						  		</div>
 
+					<div class="row imageclass pt-3" tag="duplicate" id="imagebox" hidden="false">
+							        <div id="leftNav" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							            <div class="form-group imagecard"> 
+							            	<small id="titlelabel" class="titlelabel" for="input">Select an image: </small>
+
+							            	<button onclick="removeimage(this)" id="removebuttonid" type="button" class="btn btn-outline-secondary addstepimgbtn removenotebtn" role="button"><i class="fas fa-times-circle"></i></button>
+
+								            
+
+								            <div class="d-flex justify-content-center container" id="imagesetup" style="padding-top: 35px;">
+								            	<label class="btn btn-outline-success uploadimagebutton" style="max-height: 40px;">
+												    Upload a file <input type="file" accept="image/*" onchange="preview_image(event, this)" hidden>
+												</label>
+
+												<img class="pl-3" id="output_image" style="max-height: 60px;" />
+								            </div>
+
+
+
+							            </div>
+							        </div>
+						  		</div>
+
           		<div class="pt-2 show methoddesccont pull-right" >
 			  		
 
@@ -444,7 +507,7 @@
 					<button onclick="noteadd(this)" type="button" class="btn btn-warning mt-2 mx-auto stepfinalbuttons col-md-2" href="#notebox" role="button" id="addnote"><i class="fas fa-exclamation-triangle"></i> Add Note</button>
 
 
-					<button type="button" class="btn btn-primary addstepimgbtn mx-auto mt-2 col-md-2" role="button"><i class="fas fa-image"></i>  Add Image</button>
+					<button onclick="addimage(this)" type="button" class="btn btn-primary addstepimgbtn mx-auto mt-2 col-md-2" role="button"><i class="fas fa-image"></i>  Add Image</button>
 
 					<button onclick="videobtnchange(this)" data-toggle="collapse" href="#videochoose" type="button" class="btn btn-danger mt-2 mx-auto stepfinalbuttons col-md-2" role="button" id="addvideo"><i class="fab fa-youtube"></i> Add Video</button>
 					
@@ -463,8 +526,36 @@
         </main>
 
 		<div class="container col-md-2 pt-4">
-			<canvas class="myCanvas col-12 adcanvas "></canvas>
+		  <nav  >
+			<div class="documentationcard">
+	          	<div class="card mx-auto" style="justify-content: center;">
+				  <div class="card-body mx-auto " style="height: 50px; padding-top: 15px;">
+				    <h6 class="text-muted mx-auto">
+	                Get some tips!<i class="far fa-lightbulb fa-fw"></i>
+	            	</h6>
+				  </div>
+				</div>
+	        </div>
+
+	        <div class="categorycard">
+	          	<div class="card" style="margin-top: 20px;">
+				  <div class="card-body sidebarcard text-center" style=" padding-top: 10px;">
+				    <h6 class="sidebar-heading mx-auto  text-muted sidebarcontent">
+	              <span>Select Category <i class="fas fa-cubes"></i></span>
+	            </h6>
+
+	            <ul class="nav flex-column">
+	              <li class="nav-item">
+	                <a class="nav-link textstyle1 buttonstyle1" href="#">
+	                  Fix number 1
+	                </a>
+	              </li>
+	            </ul>
+				  </div>
+				</div>
+	        </div>
 		</div>
+	</nav>
 
       </div>
     </div>

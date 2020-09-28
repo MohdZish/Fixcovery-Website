@@ -3,6 +3,31 @@ body {
   margin: 0;
   background: white !important;
 }
+
+@font-face {
+  font-family: Roboto;
+  src: url(Fonts/Roboto-Medium.tff);
+}
+
+@font-face {
+  font-family: BebasNeue;
+  src: url(Fonts/BebasNeue-Regular.tff);
+}
+
+@font-face {
+  font-family: Oswald;
+  src: url(Fonts/Oswald-VariableFont_wght.tff);
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Fonts/Inter-Regular.woff2?v=3.15") format("woff2"),
+       url("Fonts/Inter-Regular.woff?v=3.15") format("woff");
+}
+
 /*--- navigation bar ---*/
 .navbar {
   /*----webkit-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
@@ -16,7 +41,36 @@ body {
 .navbuttons{
   background-color: transparent !important;
   color: #fcfcfc !important;
+  font-family: Inter;
 }
+
+.underline {
+  position : relative;
+   color : tomato ;
+  display : inline-block;
+}
+.underline::after {
+  content : "";
+  position : absolute;
+  width : 100%;
+  height : 2px;
+  background-color: white;
+  opacity: 0.7;
+  bottom: 0;
+  left: 0;
+  transform : scaleX(0);
+  transform-origin: bottom right;
+  transition : transform 0.25s linear;
+}
+.underline:hover::after {
+  transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+
+.nav-item .dropdown-menu{ display: none !important; margin-top: 0px !important; }
+.navbar .nav-item:hover .nav-link{ color: #fff !important; }
+.navbar .nav-item:hover .dropdown-menu{ display: block !important;  }
 
 .signupbutton{
   background-color: #0090ff;
@@ -36,11 +90,11 @@ body {
 }
 
 .searcharea{
-  padding-left: 50px !important;
+  padding-left: 30px !important;
 }
 
 .searchbar{
-  width: 600px !important;
+  width: 500px !important;
   height: 35px;
   /*background-color: #8b71eb!important;
   color: white !important;*/
@@ -120,9 +174,21 @@ body {
 }
 
 .adcanvas{
-  background-color: #f0f0f0;
+  background-color: #F7F8FC;
   height: 400px;
 }
+
+.textstyle1{
+  font-family: Inter !important;
+}
+
+.buttonstyle1:hover{
+  background-color: #4b2af5;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  color: white;
+}
+
 /*--- sidebars END ---*/
 
 /*--- Main frame ---*/
@@ -203,7 +269,7 @@ body {
 }
 
 .s{
-  background-color: #F7F8FC;
+  background-color: #f0edff;
 }
 
 .arrowup{
@@ -336,6 +402,17 @@ body {
   position: absolute;
   border-color: transparent!important;
 }
+
+.imagecard{
+    background-color: #f0fff4 !important;
+    height: 100px;
+}
+/*--- 
+.uploadimagebutton{
+  flex:1;
+}
+ ---*/
+
 
 .boldtextbtn{
   display: inline-block;
