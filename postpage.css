@@ -5,8 +5,10 @@ body {
 }
 
 @font-face {
-  font-family: Roboto;
-  src: url(Fonts/Roboto-Medium.tff);
+  font-family: 'roboto';
+  src: url(Fonts/Roboto-Light.tff);
+  font-style: normal;
+  font-weight: 100;
 }
 
 @font-face {
@@ -15,8 +17,10 @@ body {
 }
 
 @font-face {
-  font-family: Oswald;
-  src: url(Fonts/Oswald-VariableFont_wght.tff);
+  font-family: 'Merriweather';
+  src: url("Fonts/Merriweather-Light.tff");
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
@@ -28,6 +32,21 @@ body {
        url("Fonts/Inter-Regular.woff?v=3.15") format("woff");
 }
 
+
+/*--- Template Stuff ---*/
+
+.s{
+  background-color: #f0edff;
+}
+
+p{
+  font-size: 18px;
+  line-height: 26pt;
+  color: #292929;
+
+}
+
+/*--- Template Stuff End ---*/
 /*--- navigation bar ---*/
 .navbar {
   /*----webkit-box-shadow: 0px 8px 0px 0px rgba(230,230,230,0.39);
@@ -137,9 +156,6 @@ body {
       word-wrap: break-word;
     }
 
-    .circlecont {
-      padding-right: : 10px !important;
-    } 
     .methodbox{
       padding-left: 0px;
     }
@@ -190,8 +206,14 @@ body {
   color: white;
 }
 
+.reactionlogo{
+  font-size: 28px;
+  border-radius: 50%;
+}
+
 .sharelogo{
   font-size: 28px;
+  padding-right: 20px;
 }
 
 .innerside {
@@ -210,10 +232,12 @@ body {
 .posttitle {
    word-wrap: break-word;
    margin-top: 10px;
+   font-size: 35px;
+   color: #292929;
 }
 
 .postsubtitle {
-   font-size: 15px !important;
+   font-size: 20px !important;
    max-width: 300px;
    word-wrap: break-word;
    padding-bottom: 0px !important;
@@ -227,17 +251,16 @@ body {
 
 .methodcircle {
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    padding: 8px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
 
     background-color: #4b2af5;
     text-align: center;
 
-    font: 25px Arial, sans-serif;
+    font: 18px Arial, sans-serif;
     color: white;
     z-index: 1000;
-    position: relative;
 } 
 
 .stepcircle {
@@ -271,30 +294,23 @@ body {
 }
 
 .steptext{
-  max-width: 630px;
+  max-width: 100%;
   word-wrap: break-word;
-  padding-top: 2px;
-  position: relative;
 }
 
-.s{
-  background-color: #f0edff;
-}
+
 
 .arrowup{
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
-  padding: 3px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
 
 .arrowbtn{
   border: 0px;
-  background-color: #f5f5f5;
-  width: 100px !important;
-  padding-top: 10px;
+  background-color: transparent;
   float: right;
 }
 
@@ -358,9 +374,6 @@ body {
 
 #methodtitleinput {
     height: 100%;
-    display: block;
-    margin-top: 10px;
-    position: relative;
 }
 
 .removemethodbtn{
