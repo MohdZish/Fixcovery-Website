@@ -1,0 +1,16 @@
+Fade In while Scrolling: Super Easy !
+
+its made with a library called AOS
+https://css-tricks.com/aos-css-driven-scroll-animation-library/
+https://michalsnik.github.io/aos/
+https://openbase.io/js/aos/documentation
+
+add in element: data-aos="fade-up" like
+<div class="item" data-aos="fade-up">1</div>
+
+ALSO: Add data-aos-once="true" if needed olly once!
+
+JS: 
+AOS.init({
+  duration: 1200,
+})
