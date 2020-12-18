@@ -191,8 +191,7 @@ p{
     object-fit: cover;
     border-top-right-radius: 23;
     vertical-align: center;
-    border-opa
-    line-height: 15px;
+
 
   }
 }
@@ -242,6 +241,7 @@ p{
   border-radius: 10px;
   -webkit-transition: background-color 0.5s ease-in-out;
   color: white;
+  
 }
 
 .reactionlogo{
