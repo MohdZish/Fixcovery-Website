@@ -103,7 +103,7 @@
                   <button onclick="window.location='uploadpost.php'" class="btn btn-outline-light signin d-none d-md-block btn-sm mt-1" href="#"><i class="fas fa-plus"></i> Upload Post</button>
                 </li>
                 <div class="nav-item dropdown">
-                  <img src="Images/UserAvatar/example3.png" alt="Avatar" class="avatar" id="useravatardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a href="#"><img src="Images/UserAvatar/example3.png" alt="Avatar" class="avatar" id="useravatardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="useravatardropdown">
                   <a class="dropdown-item" onclick="window.location='userpage.php'" href="#">My Account</a>
