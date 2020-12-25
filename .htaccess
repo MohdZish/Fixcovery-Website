@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^postpage?$ postpage.php
+
+RewriteRule ^article/([0-9]+) postpage.php?postid=$1
